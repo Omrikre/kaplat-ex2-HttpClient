@@ -18,20 +18,21 @@ if __name__ == '__main__':
         'requestId': responseGet.text}
 
     print("2 - POST")
-    print("data: " + str(bodyPost))
     responsePost = requests.post('http://localhost:8989/test_post_method', data=bodyPost)
     print("response: " + responsePost.text)
 
     # request 3 - PUT
+    print("3 - PUT")
     messagePost = responsePost.json()['message']
     hour = (hour + 21) % 24
     minute = (minute + 13) % 60
     bodyPut = {
         "hour": hour,
-        "minute": minute
-    }
+        "minute": minute}
     responsePut = requests.put('http://localhost:8989/test_put_method', params={"id": messagePost}, data=bodyPut)
     messagePut = responsePut.json()['message']
+    print("response: " + messagePut)
 
     # request 4 - DELETE
+    print("4 - DELETE")
     requests.delete('http://localhost:8989/test_delete_method', params={"id": messagePut})
