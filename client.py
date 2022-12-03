@@ -8,7 +8,6 @@ if __name__ == '__main__':
     param = "hour=" + str(hour) + "&" + "minute=" + str(minute)
 
     print("1 - GET")
-    print("request: " + url + "/test_get_method?" + param)
     responseGet = requests.get('http://localhost:8989/test_get_method', params={'hour': hour, 'minute': minute})
     print("response: " + responseGet.text)
 
@@ -19,7 +18,6 @@ if __name__ == '__main__':
         'requestId': responseGet.text}
 
     print("2 - POST")
-    print("request: " + url + "/test_post_method")
     print("data: " + str(bodyPost))
     responsePost = requests.post('http://localhost:8989/test_post_method', data=bodyPost)
     print("response: " + responsePost.text)
